@@ -1,0 +1,234 @@
+html,
+body,
+.outer {
+  width: 100%;
+}
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+}
+.inner .header {
+  width: 100%;
+  height: 73px;
+  font-size: 18px;
+  color: #333;
+  line-height: 73px;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+}
+.inner .content {
+  width: 100%;
+  height: 1000px;
+  margin-top: 15px;
+}
+.inner .content .userInfo {
+  width: 100%;
+  height: 195px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.inner .content .userInfo .userInfoTitle {
+  width: 100%;
+  height: 40px;
+  background-color: #f4f4f4;
+  color: #999;
+}
+.inner .content .userInfo .userInfoTitle span {
+  line-height: 40px;
+  margin-left: 20px;
+}
+.inner .content .userInfo .contactDetails {
+  width: 100%;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.inner .content .userInfo .contactDetails .contactTop {
+  width: 100%;
+  height: 26px;
+  box-sizing: border-box;
+  padding-top: 25px;
+  color: #999;
+  margin-bottom: 45px;
+}
+.inner .content .userInfo .contactDetails .contactTop i {
+  display: inline-block;
+  width: 16px;
+  height: 20px;
+  background-image: url("../images/dinwei.png");
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+.inner .content .userInfo .contactDetails .contactTop a {
+  margin-left: 20px;
+  padding: 4px 17px;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.inner .content .userInfo .contactDetails .contactBottom {
+  display: flex;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomLeft {
+  width: 80%;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomLeft .phone {
+  margin-bottom: 10px;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomLeft .phone span {
+  margin-right: 60px;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomLeft .phone span em {
+  color: #999;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomLeft .adress em {
+  color: #999;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomRight {
+  width: 20%;
+  height: 60px;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomRight a {
+  text-align: center;
+  color: #0373c2;
+  margin-top: -8px;
+}
+.inner .content .userInfo .contactDetails .contactBottom .bottomRight button {
+  width: 100px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 8px auto;
+}
+.inner .content .goodsInfo {
+  width: 100%;
+  margin-top: 50px;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.inner .content .goodsInfo .goodsInfoTitle {
+  width: 100%;
+  height: 40px;
+  background-color: #f4f4f4;
+  color: #999;
+}
+.inner .content .goodsInfo .goodsInfoTitle span {
+  line-height: 40px;
+  display: inline-block;
+}
+.inner .content .goodsInfo .goodsInfoTitle .goodInfo {
+  margin-left: 20px;
+  width: 566px;
+}
+.inner .content .goodsInfo .goodsInfoTitle .sale {
+  margin-left: 40px;
+  width: 195px;
+}
+.inner .content .goodsInfo .goodsInfoTitle .count {
+  margin-right: 50px;
+  width: 50px;
+}
+.inner .content .goodsInfo .goodsInfoTitle .total {
+  width: 80px;
+  margin-left: 40px;
+}
+.inner .content .goodsInfo .goodsDetail {
+  width: 100%;
+  height: 117px;
+}
+.inner .content .goodsInfo .goodsDetail .goodPicture {
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+.inner .content .goodsInfo .goodsDetail .desc {
+  display: inline-block;
+  height: 100px;
+  box-sizing: border-box;
+  padding-top: 28px;
+  vertical-align: middle;
+}
+.inner .content .goodsInfo .goodsDetail .desc i {
+  margin-top: 7px;
+  display: block;
+  color: #999;
+}
+.inner .content .goodsInfo .goodsDetail .saleDeatil {
+  margin-left: 138px;
+  display: inline-block;
+  height: 117px;
+  line-height: 117px;
+}
+.inner .content .goodsInfo .goodsDetail .countDetail {
+  margin-left: 175px;
+}
+.inner .content .goodsInfo .goodsDetail .totalDetail {
+  margin-left: 120px;
+}
+.inner .content .goodsInfo .dealWrapper {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.inner .content .goodsInfo .dealWrapper .deal {
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  padding-top: 30px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+.inner .content .goodsInfo .dealWrapper .deal .goodsAll .goodsAllRight {
+  margin-left: 90px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .goodsAll .goodsAllLeft {
+  margin-left: 830px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .roadPrice {
+  margin-top: 8px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .roadPrice .roadPriceLeft {
+  margin-left: 858px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .roadPrice .roadPriceRight {
+  margin-left: 90px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .factPay {
+  margin-top: 8px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .factPay .factPayRight {
+  font-size: 18px;
+  color: #d33a31;
+  margin-left: 80px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .factPay .factPayLeft {
+  margin-left: 830px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .sendOrder {
+  margin-top: 10px;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+}
+.inner .content .goodsInfo .dealWrapper .deal .sendOrder button {
+  width: 174px;
+  height: 50px;
+  background-color: #d33a31;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  border: none;
+  margin-top: 5px;
+  font-size: 16px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .sendOrder .sendOrderLeft {
+  margin-top: 48px;
+}
+.inner .content .goodsInfo .dealWrapper .deal .infoAll {
+  float: right;
+  color: #666;
+  margin-bottom: 24px;
+}

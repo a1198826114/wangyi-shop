@@ -1,0 +1,241 @@
+html,
+body,
+.outer {
+  width: 100%;
+}
+
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  .header {
+    width: 100%;
+    height: 73px;
+    font-size: 18px;
+    color: #333;
+    line-height: 73px;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+  }
+  .content {
+    width: 100%;
+    height: 1000px;
+    margin-top: 15px;
+    // 收货信息
+    .userInfo {
+      width: 100%;
+      height: 195px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      box-sizing: border-box;
+      .userInfoTitle {
+        width: 100%;
+        height: 40px;
+        background-color: rgb(244, 244, 244);
+        color: #999;
+        span {
+          line-height: 40px;
+          margin-left: 20px;
+        }
+      }
+      .contactDetails {
+        width: 100%;
+        padding-left: 30px;
+        box-sizing: border-box;
+        .contactTop {
+          width: 100%;
+          height: 26px;
+          box-sizing: border-box;
+          padding-top: 25px;
+          color: #999;
+          margin-bottom: 45px;
+          i {
+            display: inline-block;
+            width: 16px;
+            height: 20px;
+            background-image: url("../images/dinwei.png");
+            vertical-align: bottom;
+            margin-right: 5px;
+          }
+          a {
+            margin-left: 20px;
+            padding: 4px 17px;
+            font-size: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+          }
+        }
+        .contactBottom {
+          display: flex;
+          .bottomLeft {
+            width: 80%;
+            .phone {
+              margin-bottom: 10px;
+              span {
+                margin-right: 60px;
+                em {
+                  color: #999;
+                }
+              }
+            }
+            .adress {
+              em {
+                color: #999;
+              }
+            }
+          }
+          .bottomRight {
+            width: 20%;
+            height: 60px;
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            a {
+              text-align: center;
+              color: #0373c2;
+              margin-top: -8px;
+            }
+            button {
+              width: 100px;
+              height: 30px;
+              border: 1px solid rgba(0, 0, 0, 0.2);
+              margin: 8px auto;
+            }
+          }
+        }
+      }
+    }
+    .goodsInfo {
+      width: 100%;
+      margin-top: 50px;
+      font-size: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      .goodsInfoTitle {
+        width: 100%;
+        height: 40px;
+        background-color: rgb(244, 244, 244);
+        color: #999;
+        span {
+          line-height: 40px;
+
+          display: inline-block;
+        }
+        .goodInfo {
+          margin-left: 20px;
+          width: 566px;
+        }
+        .sale {
+          margin-left: 40px;
+          width: 195px;
+        }
+        .count {
+          margin-right: 50px;
+          width: 50px;
+        }
+        .total {
+          width: 80px;
+          margin-left: 40px;
+        }
+      }
+      .goodsDetail {
+        width: 100%;
+        height: 117px;
+        .goodPicture {
+          width: 80px;
+          height: 80px;
+          margin-left: 20px;
+          margin-right: 20px;
+          vertical-align: middle;
+        }
+        .desc {
+          display: inline-block;
+          height: 100px;
+          box-sizing: border-box;
+          padding-top: 28px;
+          vertical-align: middle;
+          i {
+            margin-top: 7px;
+            display: block;
+            color: #999;
+          }
+        }
+        .saleDeatil {
+          margin-left: 138px;
+          display: inline-block;
+          height: 117px;
+          line-height: 117px;
+        }
+        .countDetail {
+          margin-left: 175px;
+        }
+        .totalDetail {
+          margin-left: 120px;
+        }
+      }
+      .dealWrapper {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+        .deal {
+          width: 100%;
+          border-top: 1px solid #eaeaea;
+          padding-top: 30px;
+          padding-right: 40px;
+          box-sizing: border-box;
+          .goodsAll {
+            .goodsAllRight {
+              margin-left: 90px;
+            }
+            .goodsAllLeft {
+              margin-left: 830px;
+            }
+          }
+          .roadPrice {
+            margin-top: 8px;
+            .roadPriceLeft {
+              margin-left: 858px;
+            }
+            .roadPriceRight {
+              margin-left: 90px;
+            }
+          }
+          .factPay {
+            margin-top: 8px;
+            .factPayRight {
+              font-size: 18px;
+              color: #d33a31;
+              margin-left: 80px;
+            }
+            .factPayLeft {
+              margin-left: 830px;
+            }
+          }
+          .sendOrder {
+            margin-top: 10px;
+            height: 65px;
+            display: flex;
+            justify-content: space-between;
+            button {
+              width: 174px;
+              height: 50px;
+              background-color: #d33a31;
+              color: white;
+              text-align: center;
+              line-height: 50px;
+              border: none;
+              margin-top: 5px;
+              font-size: 16px;
+            }
+            .sendOrderLeft {
+              margin-top: 48px;
+            }
+          }
+          .infoAll {
+            float: right;
+            color: #666;
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+}

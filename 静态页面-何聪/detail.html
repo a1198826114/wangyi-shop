@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/reset.css">
+  <title>商品页详情</title>
+  <style>
+    /* 商品详情容器 */
+    .detail-container {
+      width: 1100px;
+      height: 100%;
+      margin: 0 auto;
+    }
+    /* 头部导航 */
+    .detail-container .header {
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      height: 80px;
+      padding: 30px 0 19px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 1px solid #333;
+    }
+    .left-nav a {
+      cursor: pointer;
+      text-decoration: none;
+      color: #333;
+    }
+    .left-nav span {
+      color: #999;
+    }
+    .detail-container .share {
+      cursor: pointer;
+      margin-top: 11px;
+      font-size: 16px;
+      text-indent: 27px;
+      color: #666;
+      background: url(./image/share.png) no-repeat ;
+    }
+    /* 主要内容 */
+    .detail-container .main {
+      display: flex;
+      margin-top: 20px;
+    }
+    .main .left-container .swiper{
+      display: flex;
+      justify-content: space-between;
+    }
+    /* 右侧详情介绍 */
+    .main .introduce {
+      margin-left: 80px;
+      font-size: 12px;
+      color: #333;
+    }
+    .introduce .title {
+      margin: 0;
+      line-height: 34px;
+      font-size: 24px;
+    }
+    .introduce .sell {
+      font-size: 14px;
+      margin-top: 8px;
+      color: #999;
+    }
+    .introduce .price {
+      margin: 20px 0;
+      color: #d33a31;
+      font-size: 30px;
+    }
+    .introduce .color {
+      display: flex;
+    }
+    .color div {
+      margin-right: 30px;
+      height: 30px;
+      line-height: 30px;
+      color: #999;
+    }
+    .color span {
+      box-sizing: border-box;
+      height: 30px;
+      margin-bottom: 10px;
+      line-height: 27px;
+      text-align: center;
+      margin-right: 10px;
+      padding: 0 20px;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      cursor: pointer;
+    }
+    .introduce .count {
+      display: flex;
+    }
+    .count div {
+      margin-right: 30px;
+      height: 30px;
+      line-height: 30px;
+      color: #999;
+    }
+    .count .mins {
+      font-size: 20px;
+      text-align: center;
+      box-sizing: border-box;
+      width: 34px;
+      height: 30px;
+      border: 1px solid #e5e5e5;
+      border-right: none;
+      cursor: pointer;
+    }
+    .mins i {
+      opacity: 0.3;
+      position: relative;
+      left: 3px;
+      top: 1px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url(./image/icon-sprit.png) no-repeat 0 9999px;
+      background-position: -38px -534px;
+      overflow: hidden;
+    }
+    .count .num {
+      box-sizing: border-box;
+      width: 59px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+    }
+    .count .plus {
+      font-size: 20px;
+      text-align: center;
+      box-sizing: border-box;
+      width: 34px;
+      height: 30px;
+      border: 1px solid #e5e5e5;
+      border-left: none;
+      cursor: pointer
+    }
+    .plus i {
+      position: relative;
+      left: 3px;
+      top: 1px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: url(./image/icon-sprit.png) no-repeat 0 9999px;
+      background-position: 0px -534px;
+    }
+    .introduce .server {
+      display: flex;
+      margin-top: 20px;
+    }
+    .server div{
+      margin-right: 30px;
+      height: 30px;
+      line-height: 30px;
+      color: #999;
+    }
+    .server span {
+      display: inline-block;
+      position: relative;
+      line-height: 30px;
+      margin-right: 28px;
+      color: #666;
+    }
+    .server span::after {
+      content: "";
+      position: absolute;
+      top: 13px;
+      left: -8px;
+      width: 3px;
+      height: 3px;
+      border-radius: 100%;
+      background-color: #d33a31;
+    }
+    .introduce .btn {
+      margin-top: 30px;
+    }
+    .btn .buy-btn {
+      border: none;
+      box-sizing: border-box;
+      line-height: 47px;
+      width: 170px;
+      height: 50px;
+      font-size: 18px;
+      border: 2px solid #d33a31;
+      color: #d33a31;
+      background-color: white;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .btn .addcart-btn {
+      border: none;
+      width: 188px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      background-color: #d33a31;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+    }
+    .addcart-btn i {
+      display: inline-block;
+      margin: -4px 6px 0 0;
+      vertical-align: middle;
+      width: 30px;
+      height: 22px;
+      background: url(./image/icon-sprit.png) no-repeat 0 9999px;
+      background-position: -80px -324px;
+    } 
+    .detail-container .content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 66px;
+    }
+    /* 左侧商品细节介绍 */
+    .content .detail {
+      width: 700px;
+      font-size: 14px;
+      color: #ff0000;
+    }
+    .detail .detail-title {
+      height: 30px;
+      line-height: 30px;
+      padding-bottom: 17px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #000;
+      font-size: 22px;
+      color: #333;
+    }
+    .detail .extra {
+      margin-bottom: 28px;
+    }
+    .detail .extra p{
+      line-height: 18px;
+      padding: 5px 0;
+    }
+    .detail .big-image img{
+      vertical-align: top;
+    }
+    /* 右侧热门商品列表 */
+    .content .hot {
+      width: 340px;
+      font-size: 12px;
+      color: #333;
+    }
+    .hot .hot-title {
+      height: 30px;
+      line-height: 30px;
+      padding-bottom: 17px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #000;
+      font-size: 22px;
+    }
+    .hot .hot-item {
+      display: flex;
+      margin-bottom: 40px;
+    }
+    .hot-item .item-image img {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+    }
+    .hot-item .item-title {
+      margin-top: 10px;
+      line-height: 24px;
+      text-align: left;
+      font-size: 14px;
+    }
+    .item-title .item-intro span {
+      border: 1px solid #d74d45;
+      overflow: hidden;
+      box-sizing: border-box;
+      line-height: 19px;
+      padding: 0 3px;
+      border-radius: 1px;
+      color: #d74d45;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 商品详情页 -->
+  <div class="detail-container">
+    <!-- 头部导航 -->
+    <header class="header">
+      <div class="left-nav">
+        <a href="javascript:;">首页</a>
+        <span>&nbsp;<img src="./image/ar.png"></img>&nbsp;爱国者（aigo）播放器M1无损hifi音乐播放器触屏mp3学生随身听便携播放器</span>
+      </div>
+      <div class="share">分享</div>
+    </header>
+    <!-- 商品主要内容 -->
+    <div class="main">
+      <!-- 左侧放大镜区域 -->
+      <div class="left-container">
+        <div class="imgBox"><img src="./image/player.jpg" alt="" /></div>
+        <div class="swiper">
+          <img src="./image/small1.jpg" alt="">
+          <img src="./image/small2.jpg" alt="">
+          <img src="./image/small1.jpg" alt="">
+          <img src="./image/small2.jpg" alt="">
+          <img src="./image/small1.jpg" alt="">
+        </div>
+      </div>
+      <!-- 右侧详细介绍 -->
+      <div class="introduce">
+        <h2 class="title">爱国者（aigo）播放器M1无损hifi音乐播放器触屏mp3学生随身听便携播放器</h2>
+        <p class="sell">下单送16G内存卡 镜面触屏播放器 高清外放 30小时长时播放 蓝牙4.1</p>
+        <div class="price">¥269</div>
+        <div class="color">
+          <div>颜色:</div>
+          <span>黑色</span>
+          <span>白色</span>
+        </div>
+        <div class="count">
+          <div>数量:</div>
+          <span class="mins"><i></i></span>
+          <span class="num">1</span>
+          <span class="plus"><i></i></span>
+        </div>
+        <div class="server">
+          <div>服务:</div>
+          <span>7天无理由退货</span>
+          <span>15天无忧换货</span>
+          <span>满119包邮</span>
+          <span>商家发货</span>
+          <span>网易自营</span>
+        </div>
+        <div class="btn">
+          <button class="buy-btn">立即购买</button>
+          <button class="addcart-btn">
+            <i></i> 加入购物车
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 商品细节介绍和其他热门商品 -->
+    <div class="content">
+      <!-- 商品细节介绍 -->
+      <div class="detail">
+        <h2 class="detail-title">商品详情</h2>
+        <div class="extra">
+          <p>正品低价 品质保证</p>
+          <p>春节期间可正常发货</p>
+          <p>装箱清单：主机× 1，数据线× 1，说明书× 1，合格证× 1。</p>
+          <p>新疆、西藏、湖北地区因物流原因暂时无法配送，敬请谅解。</p>
+        </div>
+        <div class="big-image">
+          <img src="./image/big1.png" alt="">
+          <img src="./image/big2.png" alt="">
+          <img src="./image/big3.png" alt="">
+        </div>
+      </div>
+      <!-- 热门商品 -->
+      <div class="hot">
+        <h2 class="hot-title">热门商品</h2>
+        <div class="hot-item">
+          <div class="item-image"><img src="./image/hot.png" alt=""></div>
+          <div class="item-title">
+            <div class="item-intro"><span>特价</span>&nbsp;【限时5折】i10max真无线蓝牙耳机苹果安卓通用</div>
+            <div class="item-price">¥49</div>
+          </div>
+        </div>
+        <div class="hot-item">
+          <div class="item-image"><img src="./image/hot.png" alt=""></div>
+          <div class="item-title">
+            <div class="item-intro"><span>特价</span>&nbsp;【限时5折】i10max真无线蓝牙耳机苹果安卓通用</div>
+            <div class="item-price">¥49</div>
+          </div>
+        </div>
+        <div class="hot-item">
+          <div class="item-image"><img src="./image/hot.png" alt=""></div>
+          <div class="item-title">
+            <div class="item-intro"><span>特价</span>&nbsp;【限时5折】i10max真无线蓝牙耳机苹果安卓通用</div>
+            <div class="item-price">¥49</div>
+          </div>
+        </div>
+        <div class="hot-item">
+          <div class="item-image"><img src="./image/hot.png" alt=""></div>
+          <div class="item-title">
+            <div class="item-intro"><span>特价</span>&nbsp;【限时5折】i10max真无线蓝牙耳机苹果安卓通用</div>
+            <div class="item-price">¥49</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

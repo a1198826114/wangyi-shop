@@ -1,17 +1,23 @@
 <template>
-  <div id="app"></div>
+  <div>
+     <Header />
+     <router-view></router-view>
+     <Foot />
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Header from './components/Header'
+import Foot from './components/Foot'
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Header,
+    Foot
   },
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

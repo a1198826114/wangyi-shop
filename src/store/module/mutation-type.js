@@ -1,0 +1,1 @@
+export const GETALBUMLIST = 'getAlbumList' // 获取数字专家列表

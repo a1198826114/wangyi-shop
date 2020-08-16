@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
+// 引入Swiper的样式
+import 'swiper/css/swiper.css'
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

@@ -6,7 +6,8 @@
       <div class="nav">
         <div class="nav-warp">
           <span class="oneNav">
-            <a href>首页</a>
+            <!-- <a href>首页</a> -->
+            <router-link to="/">首页</router-link>
           </span>
           <span class="towNav">
             <i></i>
@@ -536,5 +537,6 @@ export default {
     }
   }
 }
+
 </style>
 

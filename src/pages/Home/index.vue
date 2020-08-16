@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
       <Banners />
       <Tab />
       <Contain />
@@ -17,7 +17,8 @@ export default {
         Banners,
         Tab,
         Contain
-    }
+    },
+   
 }
 </script>
 

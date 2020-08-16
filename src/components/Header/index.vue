@@ -2,14 +2,20 @@
   <!-- 头部 -->
   <div class="header">
     <div class="header-item">
-      <router-link to="/" >
+      <router-link to="/">
         <div class="icon-home"></div>
       </router-link>
       <div class="search">
         <div class="input-wrap">
           <form action>
-            <input type="text" placeholder="降躁" />
+            <input type="text" :placeholder="searchList.defaultKey" @click="handleInput" />
           </form>
+        </div>
+        <div class="in-wrp" v-show="isshow">
+          <div class="search-hot one">热门搜索</div>
+          <div class="search-hot" v-for="(item,index) in searchList.configKey">
+            <a href>{{item[index+1]}}</a>
+          </div>
         </div>
       </div>
       <div class="shopCart">
@@ -31,8 +37,27 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Header",
+  data() {
+    return {
+      isshow:false
+    };
+  },
+  methods: {
+    handleInput() {
+      this.isshow=!this.isshow
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getSearch");
+  },
+  computed: {
+    ...mapState({
+      searchList: (state) => state.home.searchList,
+    }),
+  },
 };
 </script>
 
@@ -75,6 +100,37 @@ export default {
             border: 0;
             background: transparent;
           }
+        }
+      }
+      .in-wrp {
+        position: absolute;
+        z-index: 9999;
+        top: 56px;
+        width: 300px;
+        height: auto;
+        background-color: #fff;
+        box-shadow: 0 4px 7px #555;
+        .search-hot {
+          width: 280px;
+          height: 34px;
+          padding-left: 20px;
+          line-height: 34px;
+          font-size: 14px;
+          color: #888;
+          &:hover {
+            background-color: rgb(245, 245, 245);
+          }
+          a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+          }
+        }
+        .one {
+          border-bottom: 1px solid #ddd;
+          color: #333;
+          font-size: 12px;
         }
       }
     }

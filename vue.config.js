@@ -1,14 +1,20 @@
 module.exports = {
+  lintOnSave: false,
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:6666',
+        target: 'https://music.163.com/store/api',
         ws: true,
         changeOrigin: true,
-		pathRewrite:{
-			"^/api":""
-		}
+        pathRewrite: {
+          "^/api": ""
+        }
       }
+    },
+    overlay: {
+      warnings: true,
+      errors: true
     }
+  
   }
 }

@@ -5,77 +5,16 @@
       <h2>新碟上架</h2>
       <ul class="album-content">
         <!-- 仅仅测试这个地方使用编程式路由跳转 -->
-        <router-link to="/addAlbum">
-          <li class="item">
-            <!-- 图片 -->
-            <div class="item-img">
-              <img
-                src="https://p2.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?param=440y440"
-              />
-            </div>
-            <h3 class="name">以家人之名 影视原声带</h3>
-            <div class="author">群星</div>
-            <div class="price">
-              ￥
-              <span>100</span>
-            </div>
-          </li>
-        </router-link>
-
-        <li class="item">
+        <li class="item" v-for="item in albumList" :key="item.albumId">
           <!-- 图片 -->
-          <div class="item-img">
-            <img
-              src="https://p2.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?param=440y440"
-            />
+          <div class="item-img" @click="toAlbumInfo(item.albumId)">
+            <img :src="item.coverUrl" />
           </div>
-          <h3 class="name">以家人之名 影视原声带</h3>
-          <div class="author">群星</div>
+          <h3 class="name">{{item.albumName}}</h3>
+          <div class="author">{{item.artistName}}</div>
           <div class="price">
             ￥
-            <span>100</span>
-          </div>
-        </li>
-        <li class="item">
-          <!-- 图片 -->
-          <div class="item-img">
-            <img
-              src="https://p2.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?param=440y440"
-            />
-          </div>
-          <h3 class="name">以家人之名 影视原声带</h3>
-          <div class="author">群星</div>
-          <div class="price">
-            ￥
-            <span>100</span>
-          </div>
-        </li>
-        <li class="item">
-          <!-- 图片 -->
-          <div class="item-img">
-            <img
-              src="https://p2.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?param=440y440"
-            />
-          </div>
-          <h3 class="name">以家人之名 影视原声带</h3>
-          <div class="author">群星</div>
-          <div class="price">
-            ￥
-            <span>100</span>
-          </div>
-        </li>
-        <li class="item">
-          <!-- 图片 -->
-          <div class="item-img">
-            <img
-              src="https://p2.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?param=440y440"
-            />
-          </div>
-          <h3 class="name">以家人之名 影视原声带</h3>
-          <div class="author">群星</div>
-          <div class="price">
-            ￥
-            <span>100</span>
+            <span>{{item.price}}</span>
           </div>
         </li>
       </ul>
@@ -85,31 +24,37 @@
     <div class="ranking-board">
       <div class="nav">
         <div class="left">
-          <span class="active">数字专辑榜</span>
+          <span @click="changeIsAlbum(true)" :class="isAlbum?'active':''">数字专辑榜</span>
           <i>|</i>
-          <span>数字单曲榜</span>
+          <span @click="changeIsAlbum(false)" :class="!isAlbum?'active':''">数字单曲榜</span>
         </div>
         <div class="right">
-          <div class="item active spot">
+          <div class="item spot" @click="changeFlage(1)" :class="flage===1?'active':''">
             <span>日榜</span>
           </div>
 
-          <div class="item spot">
+          <div class="item spot" @click="changeFlage(2)" :class="flage===2?'active':''">
             <span>周榜</span>
           </div>
 
-          <div class="item spot">
-            <span>2020年榜</span>
+          <div
+            class="item spot"
+            @mouseenter="isYear=true"
+            @mouseleave="isYear=false"
+            @click="changeFlage(3)"
+            :class="flage===3?'active':''"
+          >
+            <span>{{year}}年榜</span>
             <i></i>
             <!-- ul这个隐藏请通过v-if -->
-            <!-- <ul>
-                <li>2018年榜</li>
-                <li>2019年榜</li>
-                <li>2020年榜</li>
-            </ul>-->
+            <ul v-if="isYear">
+              <li @click="getYearRanking(3)">{{new Date().getFullYear()-2}}年榜</li>
+              <li @click="getYearRanking(2)">{{new Date().getFullYear()-1}}年榜</li>
+              <li @click="getYearRanking(1)">{{new Date().getFullYear()}}年榜</li>
+            </ul>
           </div>
 
-          <div class="item">
+          <div class="item" @click="changeFlage(4)" :class="flage===4?'active':''">
             <span>总榜</span>
           </div>
           <div class="rule">
@@ -134,92 +79,38 @@
             <div>歌手</div>
             <div>销量</div>
           </li>
-          <li class="item">
+
+          <li
+            @click="toAlbumInfo(item.albumId)"
+            class="item"
+            v-for="(item,index) in (isRanking ? ranking : yearRanking)"
+            :key="item.albumId"
+          >
             <div class="index">
               <div class="number">
-                <span>1</span>
+                <span>{{index+1}}</span>
                 <div>
-                  <i>+</i>1
+                  <!-- botom top -->
+                  <i
+                    v-if="!item.newest && +item.rankIncr !== 0"
+                    :class="item.rankIncr < 0 ? 'botom' : 'top'"
+                    class="icon"
+                  ></i>
+                  <i
+                    :class="item.newest?'new' :''"
+                  >{{item.newest?'':Math.abs(item.rankIncr) === 0 ? '- 0' :Math.abs(item.rankIncr) }}</i>
                 </div>
               </div>
 
               <div class="image">
-                <img
-                  src="http://p1.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?imageView=1&type=webp&thumbnail=125x0"
-                />
+                <img :src="item.coverUrl" />
                 <div></div>
               </div>
             </div>
-            <div class="name">以家人之名 影视原声带</div>
-            <div class="singer">群星</div>
+            <div class="name">{{item.albumName}}</div>
+            <div class="singer">{{item.artistName}}</div>
             <div class="num">
-              <span>2752</span>张
-            </div>
-          </li>
-          <li class="item">
-            <div class="index">
-              <div class="number">
-                <span>1</span>
-                <div>
-                  <i>+</i>1
-                </div>
-              </div>
-
-              <div class="image">
-                <img
-                  src="http://p1.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?imageView=1&type=webp&thumbnail=125x0"
-                />
-                <div></div>
-              </div>
-            </div>
-            <div class="name">以家人之名 影视原声带</div>
-            <div class="singer">群星</div>
-            <div class="num">
-              <span>2752</span>张
-            </div>
-          </li>
-          <li class="item">
-            <div class="index">
-              <div class="number">
-                <span>1</span>
-                <div>
-                  <i>+</i>1
-                </div>
-              </div>
-
-              <div class="image">
-                <img
-                  src="http://p1.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?imageView=1&type=webp&thumbnail=125x0"
-                />
-                <div></div>
-              </div>
-            </div>
-            <div class="name">以家人之名 影视原声带</div>
-            <div class="singer">群星</div>
-            <div class="num">
-              <span>2752</span>张
-            </div>
-          </li>
-          <li class="item">
-            <div class="index">
-              <div class="number">
-                <span>1</span>
-                <div>
-                  <i>+</i>1
-                </div>
-              </div>
-
-              <div class="image">
-                <img
-                  src="http://p1.music.126.net/9Tm64FK0P01acRW54FH34g==/109951165211406094.jpg?imageView=1&type=webp&thumbnail=125x0"
-                />
-                <div></div>
-              </div>
-            </div>
-            <div class="name">以家人之名 影视原声带</div>
-            <div class="singer">群星</div>
-            <div class="num">
-              <span>2752</span>张
+              <span>{{item.saleNum}}</span>张
             </div>
           </li>
         </ul>
@@ -228,9 +119,101 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+import { resGetYearedAlbumRanking } from '../../api/album'
+import { GETALBUMLIST, GETALBUMRANKING } from '../../store/module/mutation-type.js'
 export default {
-  name: 'AlbumList'
+  name: 'AlbumList',
+  data () {
+    return {
+      flage: 1, // 1日榜  2周榜 3年榜 4总榜
+      isAlbum: true, // 显示 专辑榜单 还是 单曲榜单
+      isYear: false, // 是否显示年榜的选择框
+      isRanking: true, // 是否使用ranking计算属性
+      yearRanking: [], // 往年排行数据
+      year: new Date().getFullYear(),
+      type: 1 // 榜单年份状态  1 本年 2 去年 3 前年
 
+    }
+  },
+  mounted () {
+    // 发送请求获取专辑列表
+    this.$store.dispatch(GETALBUMLIST)
+    // 发送请求获取专辑榜单
+    this.$store.dispatch(GETALBUMRANKING)
+  },
+  computed: {
+    ...mapState({
+      albumList: state => state.album.albumList,
+      albumRanking: state => state.album.albumRanking
+    }),
+    // 计算页面排行榜渲染的数据
+    ranking () {
+      const { flage, isAlbum, albumRanking } = this
+      let arr = []
+      if (flage === 1) {
+        arr = albumRanking.daily
+      }
+      if (flage === 2) {
+        arr = albumRanking.week
+      }
+      if (flage === 3) {
+        arr = albumRanking.year
+      }
+      if (flage === 4) {
+        arr = albumRanking.total
+      }
+      console.log()
+      if (arr === undefined) {
+        return []
+      } else {
+
+        return isAlbum ? arr[0] : arr[1]
+      }
+    }
+  },
+  methods: {
+    // 切换显示专辑排行和单曲排行
+    changeIsAlbum (isAlbum) {
+      this.isAlbum = isAlbum
+      this.getYearRanking(this.type)
+    },
+    // 切换显示周日年总排行版
+    changeFlage (flage) {
+      this.flage = flage
+      if (flage !== 3) {
+        this.isRanking = true
+        this.year = new Date().getFullYear()
+
+      }
+    },
+    // 发送请求获取过头2年的年排行
+    async getYearRanking (type) {
+      this.type = type
+      if (type === 1) {
+        this.year = new Date().getFullYear()
+        this.isRanking = true
+        return
+      } else {
+        type === 2 ? this.year = new Date().getFullYear() - 1 : this.year = new Date().getFullYear() - 2
+        this.isRanking = false
+        const result = await resGetYearedAlbumRanking({ type, isAlbum: this.isAlbum })
+        if (result.code === 200) {
+          this.yearRanking = result.products
+        } else {
+          console.log('获取往年榜单排行失败')
+        }
+      }
+    },
+    // 跳转到专辑详情页面
+    toAlbumInfo (albumId) {
+      this.$router.push({
+        path: '/addAlbum', query: {
+          albumId
+        }
+      })
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -261,6 +244,7 @@ export default {
         font-size: 14px;
         margin-bottom: 50px;
         .item-img {
+          cursor: pointer;
           width: 210px;
           height: 210px;
           border: 1px solid rgba(0, 0, 0, 0.1);
@@ -341,8 +325,12 @@ export default {
         font-size: 14px;
         color: #999;
         font-weight: 700;
+        height: 40px;
         .item {
           padding: 0 20px;
+          box-sizing: border-box;
+          height: 40px;
+          line-height: 40px;
           position: relative;
           i {
             display: inline-block;
@@ -356,7 +344,7 @@ export default {
             content: '';
             position: absolute;
             right: -2px;
-            top: 5px;
+            top: 19px;
             width: 4px;
             height: 4px;
             border-radius: 4px;
@@ -366,7 +354,7 @@ export default {
             content: '';
             position: absolute;
             right: -1px;
-            bottom: -2px;
+            bottom: 8px;
             width: 2px;
             height: 6px;
             border-radius: 1px;
@@ -377,11 +365,12 @@ export default {
             cursor: pointer;
           }
           ul {
+            cursor: pointer;
             width: 110px;
             height: 120px;
             box-sizing: border-box;
             position: absolute;
-            top: 25px;
+            top: 40px;
             left: 43px;
             z-index: 2;
             border-radius: 6px;
@@ -394,7 +383,7 @@ export default {
             color: white;
             font-weight: initial;
           }
-          &.active {
+          &.active span {
             color: #d33a31;
           }
         }
@@ -466,7 +455,30 @@ export default {
               text-align: center;
               box-sizing: border-box;
               padding-top: 25px;
-
+              .icon {
+                width: 7px;
+                height: 7px;
+                margin-right: 1px;
+                display: inline-block;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABPCAYAAADrwOU5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvBJREFUeNrsl89vEkEUx99M19rgBQIl0AunHiApJwlnm3ioPTaRRCJtPOvVP8I/wtgaPJj0RIomDfAHYC81oYmeeigghcAFBGwZ9ztxG1wX9hdNVPgmw+wO+z773s57sztMqCKdRqMR1et12TqdDvX7fTm+srJCXq+XQqGQbJxzvSkxPbBWq1GlUiGPx0Nra2vk9/slCAK41WpRtVqlXq9HsViMwuGwMRDd2dmZ9Coej1MgEKBpajabdHp6Kj2NRqPEGPsdCK/a7TYlEglaXl4mKxoOh1Qul8nn80lvIa6FCc/swCBcCxvYgiGBmAB4hzAnwXK5nGyToLAFAywOOibA7JlNE2zBAIudnJwIzGQkEiE3Oj8/lxnAkWcAuhUYYCnILS3PjFQsFqnb7VIwGKRkMjnxOjDA4mZ33tzclH2j0SCDovpDXCO7lRYpR23iYboVGGBxlA5q063AkAsGflDoqM1Jk6KpVCpNrGswwMKDFipdFAoFMRgMhF3BBrZgQHKWsQSBjkJHwVuVtjjAVlvGbm/5mvkCO8tXAM1SnGYsbpKsMh1sERGyUbu4uLjJtV/HZKWZwuxCLcHsQC3DrEJtwaxAbcPMoI5g06D/eKX8n0DKvN4Vk8bQ65veRn+smN3w4Nk+sx2ykZdOpWheAGrkjf5mZh4r4xcaQR2FrIe6Dnka1Cjk8Wv0x4tangcgkhaf+fcM/uuqGVC0DVykzZykjdQgvbdBV+KQFLZzN/vms/bt6MjDfiqzJX6IggpYR49zxyEPU5nnTLB3SyRSGECP82Fq74UjoBDMw/jSwzvvD+RGDj3OR+ouwv2e93FGWPn+ntZuN23U/dpX12kzh4sD9rlaS+e/fRk/n4GHYv2vC1lJ52svuVCKb7dXP2mDT48u74/YFd41r+w/Q6LeiK6Pn3ysPcAAepyrGfXd8fKVzje2BF3vk6BVdeSS0dJu9lHwg5McvZnK9FF9QzU/VAd2stshx+vh4jW6ADrQTwEGAPeuEaBImwkfAAAAAElFTkSuQmCC)
+                  no-repeat;
+                background-size: 20px auto;
+                &.top {
+                  background-position: 0 -55px;
+                }
+                &.botom {
+                  background-position: 0 -65px;
+                }
+              }
+              .new {
+                display: inline-block;
+                width: 20px;
+                height: 7px;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABPCAYAAADrwOU5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvBJREFUeNrsl89vEkEUx99M19rgBQIl0AunHiApJwlnm3ioPTaRRCJtPOvVP8I/wtgaPJj0RIomDfAHYC81oYmeeigghcAFBGwZ9ztxG1wX9hdNVPgmw+wO+z773s57sztMqCKdRqMR1et12TqdDvX7fTm+srJCXq+XQqGQbJxzvSkxPbBWq1GlUiGPx0Nra2vk9/slCAK41WpRtVqlXq9HsViMwuGwMRDd2dmZ9Coej1MgEKBpajabdHp6Kj2NRqPEGPsdCK/a7TYlEglaXl4mKxoOh1Qul8nn80lvIa6FCc/swCBcCxvYgiGBmAB4hzAnwXK5nGyToLAFAywOOibA7JlNE2zBAIudnJwIzGQkEiE3Oj8/lxnAkWcAuhUYYCnILS3PjFQsFqnb7VIwGKRkMjnxOjDA4mZ33tzclH2j0SCDovpDXCO7lRYpR23iYboVGGBxlA5q063AkAsGflDoqM1Jk6KpVCpNrGswwMKDFipdFAoFMRgMhF3BBrZgQHKWsQSBjkJHwVuVtjjAVlvGbm/5mvkCO8tXAM1SnGYsbpKsMh1sERGyUbu4uLjJtV/HZKWZwuxCLcHsQC3DrEJtwaxAbcPMoI5g06D/eKX8n0DKvN4Vk8bQ65veRn+smN3w4Nk+sx2ykZdOpWheAGrkjf5mZh4r4xcaQR2FrIe6Dnka1Cjk8Wv0x4tangcgkhaf+fcM/uuqGVC0DVykzZykjdQgvbdBV+KQFLZzN/vms/bt6MjDfiqzJX6IggpYR49zxyEPU5nnTLB3SyRSGECP82Fq74UjoBDMw/jSwzvvD+RGDj3OR+ouwv2e93FGWPn+ntZuN23U/dpX12kzh4sD9rlaS+e/fRk/n4GHYv2vC1lJ52svuVCKb7dXP2mDT48u74/YFd41r+w/Q6LeiK6Pn3ysPcAAepyrGfXd8fKVzje2BF3vk6BVdeSS0dJu9lHwg5McvZnK9FF9QzU/VAd2stshx+vh4jW6ADrQTwEGAPeuEaBImwkfAAAAAElFTkSuQmCC)
+                  no-repeat;
+                background-size: 20px auto;
+                background-position: 0 -35px;
+              }
               & > span {
                 color: #d33a31;
                 font-size: 24px;

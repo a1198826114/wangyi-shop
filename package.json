@@ -10,8 +10,10 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
+    "nprogress": "^0.2.0",
     "swiper": "^6.1.1",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",
@@ -27,9 +29,9 @@
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
-    "root":true,
+    "root": true,
     "env": {
-      "node": true  
+      "node": true
     },
     "extends": [
       "plugin:vue/essential",
@@ -39,7 +41,13 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
+      "no-unused-vars": [
+        1,
+        {
+          "vars": "all",
+          "args": "after-used"
+        }
+      ]
     }
   },
   "browserslist": [

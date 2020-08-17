@@ -9,6 +9,13 @@ module.exports = {
           "^/api": "",
         },
       },
+      "/serve": {
+        target: "http://localhost:4399",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/serve": "",
+        },
+      },
     },
   },
 }

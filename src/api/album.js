@@ -1,11 +1,12 @@
-import request from "./axios"
+import axios from "./axios"
+import request from "./request"
 // 发送请求获取数字专辑列表
 export function resGetAlbumList() {
   const params =
     "ccQMduZWGN6d0lE9WaPPFxK0InyPVsYNJgcT%2BYDnNdYJDbqjhroBpYccGUm%2B42KN"
   const encSecKey =
     "6fc9c047702c77a20b71c1ba8edffe3f61d6006377e1257cbae22242f2cb17c04192f499cb1afaa632734a68e3caebbcff4d17d932c8d51207390031c92ddf5ba19ec054772ebfb64c41434908bc49efa99bfb27a2e7a672da9bbcf155e432865434a4b931b737282bbfce8de866a6454587589bab2f820e8381436cf75305a6"
-  return request({
+  return axios({
     url: `/weapi/vipmall/albumproduct/list?params=${params}&encSecKey=${encSecKey}`,
     method: "POST",
   })
@@ -17,7 +18,7 @@ export function resGetAlbumRanking() {
     "J1C4WSlEjvN5ocCMkt5gj0XLeMQkZ9FWSCEffP8yv6RUtenu2JAuEGYw2wO6SQQFknx%2BqZQljNfVJ4bGIjT%2B0Nqjh17Rmwo1G3A%2FXZ5r7qAt1KkK%2BtLpVIJqxbpvKArfK12HxHOcizcyiQvP0LTa%2BuSyqmAVqU71SF41ffmljQNLXx9L7eQNH%2F4llTDBqpWNKy7kQQVDnXg%2Bf7hW8qGj5mOEn9zVugINj9zlxOU7RVNlFn59JKyV4ifrX1%2FeNSY7z6rjaAY%2FDWaEpr4%2FsJNszXzOZ8SkbjleRk%2F7sz7yKigpjhEUlJAQ5LSQICXFQPjEMtmyWl%2BMSDh81UArU%2FDGphoHxm71nzUOEe%2F4OxMWXjXxBqctLU6U6InfHRajbh%2FIdneKCnk9dzc3axRXAceaJM8Ifvbn0S3Zq6tGmLpro5ehLGHqFyoJh%2FSFG1tKhHgwj90yyDn%2F0v1YFe2EaCEK%2FjYhOudg%2BLczGLoFkZJ7cclwYk2jSA5kz6pzSP2dgpgZ7h%2FOsOTBplWkBDq21thO7iX6f1R2AGWq%2FrG70xtDfxHC9ip77rc9YO8qqmiJmR08wHN0%2BAmPa5B48IKFYYyP95vFW3jMMJXoWd9EahY%2Fli9siNp0LMF5MXNHQzvHV7bjEfMxEJpXbUWGmmxBuJMgvvffHtn2EidIY03QseelxbmyG6oeZS8uKa2oWH0BK%2BEIQdlsBxUlK4tubzMd7tJK%2FFxKPpdO4BGlX51cv%2FDHkjuSyTLUiLTB55Z%2FbAUZNnO1EzB4VCA%2BOmiRACi8T8225MiK0VadJGdDlS7vHBil23IGBBrUpqdKSvuuOQCvrB0MFpQO8rzTqwiN4O0yaj3BTyK2l7ZzlJ8l%2FDEY9sV5tdfSCTK%2BVPgHLdkeNX4o6%2BRNPaLvlieRK1l565jJP%2B9mbgIBYfKux9k959jkmz6pxFU1o1UQQuaL%2BxDkaqRfHxkmCimpanzthPgTpXrzxP1XP1l%2F7HKlCEQhzuR1hXlh02f9f8%2BIk0aAwpscmBCW47XeNLm%2FwW%2FBhwznz3eUW5QbLsp8LSqnZbnr35OWY%2FEKTgfOYRsd0oZPaB0k9MdkNuaroIyJtdTecA6meduFn1Xi%2BkTJfBVLOmqyqOax9wiM%2Bug%3D"
   const encSecKey =
     "c8ecf6d39ad8ecb48726d9d221466552e0a6443fcf6e260a4fa30f79e11a17e8594101a5c227382456dfa56dcd94e3032f7229c404e428300ef62a258671fd7f169c37086fc60b22a8a1cebc27d74bdf3652a5cb9ce49ae7cd8d0a85e22d83aa3018bbc7942ec9bf12c89e4a8e3f286e05b005ef2c172be072f69f24284d8949"
-  return request({
+  return axios({
     url: `weapi/batch?params=${params}&encSecKey=${encSecKey}`,
     method: "POST",
   })
@@ -67,7 +68,7 @@ export function resGetYearedAlbumRanking({ type, isAlbum }) {
         "26195293dff91e30639fca15c1285d7ff770e1f43303df4ee874d8e5bfc3e2d30eb4acbb46be27b7f935493b8cfd03d49b2c47138b69882be82fee7229e8018045b5d9ad04706257bf53a1b9518295b7bdd8d4fb1316e8f45b3f2c4741afe36f79b84eb38d93f35472efae1df04813a4eef74cad35ca2a46e412a037e2bf0d07"
     }
   }
-  return request({
+  return axios({
     url: `weapi/feealbum/songsaleboard/year/type?params=${params}&encSecKey=${encSecKey}`,
     method: "POST",
   })
@@ -78,8 +79,19 @@ export function resGetAlbumBestSeller() {
     "tCQirCcepYpj0Bq2XaR3U3uoOtiFhfAv5zDe6Bmsmf+E7Rsc6Fo6nmMCKvcJUsAJIVzMeHRTKCQyce3VUpUAHVBHtrqgorY1CD+ETf5kz2M="
   const encSecKey =
     "750411d026bb6e36a3bac3877d9edf7ebc1c515b5da2f5c61959202cf759dc0eeca92508b65bd6c3079f6963b00e8073622cdf4ab1778b5760a713aa73cafb6677d680c353979fbf761d7398ec95749d56dbf5d4e5c853833b62e5014e2efb3a9722495ac8dfc308b2912c2ec752138f53b978f722a25a33ef682bb6b9e1b78b"
-  return request({
+  return axios({
     url: `weapi/feealbum/songsaleboard/daily/type?params=${params}&encSecKey=${encSecKey}`,
     method: "POST",
   })
 }
+// 发送请求获取专辑的详情信息
+export function resGetAlbumInfo(albumId) {
+  return request({
+    url: "/getAlbumInfo",
+    method: "GET",
+    params: {
+      albumId,
+    },
+  })
+}
+resGetAlbumInfo(93904399)

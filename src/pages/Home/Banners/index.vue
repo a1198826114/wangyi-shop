@@ -3,36 +3,15 @@
 
   <div class="banners swiper-container">
     <div class="banner-warp swiper-wrapper">
-      <li class="banner-itme swiper-slide">
+      
+      <div class="banner-itme swiper-slide" 
+      v-for="(item,index) in bannersList" :id="index"
+     
+      >
         <a href="javascript:;">
-          <img src="../image/banner/banner1.jpg" alt />
-        </a>
-      </li>
-      <div class="banner-itme swiper-slide">
-        <a href="javascript:;">
-          <img src="../image/banner/banner2.jpg" alt />
+          <img :src="item.picStr" alt />
         </a>
       </div>
-      <li class="banner-itme swiper-slide">
-        <a href="javascript:;">
-          <img src="../image/banner/banner3.jpg" alt />
-        </a>
-      </li>
-      <li class="banner-itme swiper-slide">
-        <a href="javascript:;">
-          <img src="../image/banner/banner4.jpg" alt />
-        </a>
-      </li>
-      <li class="banner-itme swiper-slide">
-        <a href="javascript:;">
-          <img src="../image/banner/banner5.jpg" alt />
-        </a>
-      </li>
-      <li class="banner-itme swiper-slide">
-        <a href="javascript:;">
-          <img src="../image/banner/banner6.jpg" alt />
-        </a>
-      </li>
     </div>
     <div class="swiper-pagination"></div>
 
@@ -44,55 +23,87 @@
 
 <script>
 import Swiper from "swiper";
-
+import { mapState } from "vuex";
 export default {
-  name:'Banners',
-  data(){
-    return{
+  name: "Banners",
+  data() {
+    return {
+     
+    };
+  },
+  computed: {
+    ...mapState({
+      bannersList: (state) => state.home.bannersList,
+    }),
+  },
+  mounted() {
+    this.$store.dispatch("getBanner");
     
-    }
-  },
- mounted() {
+    console.log(this.bac);
     // 轮播配置
-    var mySwiper = new Swiper(".swiper-container", {
-      // direction: "vertical", // 垂直切换选项
-      loop: true, // 循环模式选项
+    setTimeout(() => {
+      this.$nextTick(function () {
+        var mySwiper = new Swiper(".swiper-container", {
+          initialSide: 0,
+          observer: true,
+          observeParents: true,
+          // direction: "vertical", // 垂直切换选项
+          loop: true, // 循环模式选项
+          autoplay: {
+            delay: 2000, //1秒切换一次
+          },
+          // 如果需要分页器
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
 
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-      },
+          // 如果需要前进后退按钮
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
 
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-    });
-
+          // 如果需要滚动条
+        });
+      });
+    }, 300);
   },
-  
 };
 </script>
 
 <style lang="less" scoped>
 // 轮播图
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #333;
+  opacity: 0.2;
+  color: white;
+  width: 37px;
+  height: 63px;
+
+  &::after {
+    font-size: 35px;
+  }
+}
 .banners {
   width: 100%;
   height: 480px;
   overflow: hidden;
   position: relative;
-  .banner-warp {
-    height: 480px;
-  
-    .banner-itme {
-      top: 0;
-      left: 0;
-      width: 1100px;
-      height: 480px;
 
+  .banner-warp {
+    width: 1100px;
+    height: 480px;
+    .lbt{
+      width: 100%;
+      height: 100%;
+    }
+    .banner-itme {
+      
+      width: 100%;
+      height: 480px;
+    
       overflow: hidden;
       a {
         z-index: 9;

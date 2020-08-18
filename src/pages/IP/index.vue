@@ -21,91 +21,34 @@
           <div class="menu-wrap">
             <div class="brand">
               <span class="title">品牌</span>
-              <ul class="brand-item">
-                <li>
-                  <a href>网易云音乐</a>
-                </li>
-                <li>
-                  <a href>网易</a>
-                </li>
-                <li>
-                  <a href>牛奶咖啡官方周边</a>
-                </li>
-                <li>
-                  <a href>xingyunshi</a>
-                </li>
-                <li>
-                  <a href>经典五大唱片</a>
-                </li>
-                <li>
-                  <a href>我们的时代</a>
-                </li>
-                <li>
-                  <a href>代鑫</a>
-                </li>
-                <li>
-                  <a href>CD专辑</a>
-                </li>
-                <li>
-                  <a href>网易云音乐</a>
-                </li>
-                <li>
-                  <a href>网易</a>
-                </li>
-                <li>
-                  <a href>牛奶咖啡官方周边</a>
-                </li>
-                <li>
-                  <a href></a>xingyunshi
-                </li>
-                <li>
-                  <a href>经典五大唱片</a>
-                </li>
-                <a href></a>
-                <li>
-                  <a href>我们的时代</a>
-                </li>
-                <li>
-                  <a href>代鑫</a>
-                </li>
-                <li>
-                  <a href>CD专辑</a>
+              <ul class="brand-item" v-if="categoryList[1]">
+                <li v-for="(item,index) in categoryList[1].value" 
+                :key="item.id" v-if="index<=num"
+                @click="handleNav(item.brandName)"
+                >
+                  <a href="javascript:;">{{item.brandName}}</a>
                 </li>
               </ul>
-              <span class="more">
+              <a href="javascript:;" class="more" @click="handleBrand">
                 更多
                 <span class="iconfont">&#xe615;</span>
-              </span>
+              </a>
             </div>
-            <div class="classify">
+            <div class="brand">
               <div class="title">分类</div>
-              <ul class="brand-item">
-                <li>
-                  <a href>音乐人周边</a>
-                </li>
-                <li>
-                  <a href>大热IP周边</a>
-                </li>
-                <li>
-                  <a href>图像音像</a>
-                </li>
-                <li>
-                  <a href>云村吉祥物</a>
+              <ul class="brand-item" v-if="categoryList[2]">
+                <li v-for="(item,index) in categoryList[2].value" :key="item.id">
+                  <a href="javascript:;">{{item.kindname}}</a>
                 </li>
               </ul>
             </div>
-            <div class="price">
+            <div class="brand">
               <div class="title">价格</div>
-              <ul class="brand-item">
-                <li>
-                  <a href>0~2666</a>
+              <ul class="brand-item" v-if="categoryList[0]">
+                <li v-for="(item,index) in categoryList[0].value" :key="item.id">
+                  <a href="javascript:;">{{item.end}}</a>
                 </li>
-                <li>
-                  <a href>2667~5332</a>
-                </li>
-                <li>
-                  <a href>5333~7999</a>
-                </li>
+
                 <li>
                   <span class="tex">自定义</span>
                   <span>
@@ -117,7 +60,7 @@
                   </span>
                 </li>
                 <li>
-                  <a href>确定</a>
+                  <a href class="btn">确定</a>
                 </li>
               </ul>
             </div>
@@ -148,112 +91,31 @@
           </ul>
         </div>
         <!-- 商品列表 -->
-        <ul class="commodities">
-          <li>
+        <ul class="commodities" v-if="productsList">
+          <li v-for="(item,index) in productsList">
             <div class="cart-wrap">
               <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
+                <img :src="item.coverUrl" alt />
               </a>
               <div class="cart-btm">
                 <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
+                  <a href>{{item.name}}</a>
                 </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="cart-wrap">
-              <a href class="cart-top">
-                <img src="./image/IP周边/ia_100000000.jpg" alt />
-              </a>
-              <div class="cart-btm">
-                <h3>
-                  <a href>嘿哟音乐 大张伟《20 是件更美好的事》LP（预售，8.31起发）</a>
-                </h3>
-                <p>¥280</p>
+                <p>¥{{item.minPrice}}</p>
               </div>
             </div>
           </li>
         </ul>
+      </div>
+      <div class="pgt">
+        <el-pagination
+          class="msg-pagination-container"
+          layout="prev, pager, next"
+          :page-count="37"
+          background
+          :current-page="pageIndex"
+          @current-change="handlepage"
+        ></el-pagination>
       </div>
     </div>
     <div class="nav-right"></div>
@@ -261,8 +123,71 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import axios from 'axios'
 export default {
   name: "IP",
+  data() {
+    return {
+      num: 16,
+      //分页器配置
+      pageIndex: 1, //默认页码是第一页
+      // pageSize: 11, //默认显示的条数
+      //请求参数
+      offset: 0,
+      
+      productsList:[]
+    };
+  },
+
+  methods: {
+    //重新发送请求的函数
+    getProducts(){
+        let pamas = new URLSearchParams()
+      pamas.append("limit","60")
+      pamas.append('offset',this.offset)
+      pamas.append('category_1',this.$route.query.title)
+      axios.post('/api/product/search',pamas).then((data)=>{
+        console.log(data)
+        this.productsList=data.data.products.splice(0,12)
+      })
+    },
+    //点击按钮显示隐藏更多品牌数据
+    handleBrand() {
+      if (this.num === 16) {
+        this.num = 100;
+      } else {
+        this.num = 16;
+      }
+    },
+    //分页的配置函数
+    handlepage(val) {
+      this.pageIndex = val;
+      this.offset = 60 * (val - 1);
+      this.getProducts()
+
+      console.log(val);
+    },
+    handleNav(name){
+      console.log(name)
+    }
+  },
+
+  mounted() {
+    
+    this.getProducts()
+    // export const reqProducts=(obj)=>ajax.post( `/product/search?limit=60&offset=${obj}&category_1=IP%E5%91%A8%E8%BE%B9`)
+    this.$store.dispatch("getCategory");
+    // this.$store.dispatch("getAllProduct", this.offset);
+    console.log(this.$route.query)
+    // this.$store.dispatch('getAllProduct',this.$route.query)
+  },
+  computed: {
+    ...mapState({
+      categoryList: (state) => state.ip.categoryList,
+      // productsList: (state) => state.ip.productsList,
+    }),
+  },
 };
 </script>
 
@@ -305,32 +230,53 @@ export default {
       font-size: 14px;
       text-align: center;
       .menu-wrap {
+        color: #333;
         .brand {
-          display: flex;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          overflow: hidden;
           .title {
             height: 44px;
             width: 80px;
             line-height: 44px;
             color: #999;
             font-weight: 600;
+            float: left;
           }
           .brand-item {
             width: 938px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            line-height: 40px;
+            float: left;
             li {
               height: 44px;
               line-height: 44px;
               padding: 0 4px;
-              display: flex;
+              float: left;
               a {
-                display: block;
-                height: 44px;
-                padding: 0px 15px;
-                line-height: 44px;
+                height: 24px;
+                padding: 3px 15px;
+              }
+
+              span {
+                float: left;
+
+                input {
+                  width: 66px;
+                  height: 20px;
+                  font-size: 14px;
+                  border: 2px solid rgba(0, 0, 0, 0.15);
+                }
+              }
+              .to {
+                padding: 0 4px;
+              }
+              .tex {
+                padding: 0 10px 0 20px;
+              }
+              .btn {
+                background-color: #ccc;
+                color: #fff;
+                height: 20px;
+                padding: 3px 13px;
+                font-weight: 600;
               }
             }
           }
@@ -340,38 +286,17 @@ export default {
             padding-right: 20px;
             height: 24px;
             margin-top: 10px;
+            text-decoration: none;
+            &:hover {
+              color: #333;
+            }
             .iconfont {
               float: right;
               font-size: 6px;
             }
           }
         }
-        .classify {
-          display: flex;
-          .title {
-            height: 44px;
-            width: 80px;
-            line-height: 44px;
-            color: #999;
-            font-weight: 600;
-          }
-          .brand-item {
-            width: 938px;
 
-            li {
-              height: 44px;
-              line-height: 44px;
-              padding: 0 4px;
-              float: left;
-              a {
-                float: left;
-                height: 44px;
-                padding: 0px 15px;
-                line-height: 44px;
-              }
-            }
-          }
-        }
         .price {
           display: flex;
           .title {
@@ -389,28 +314,6 @@ export default {
               line-height: 44px;
               padding: 0 4px;
               float: left;
-              a {
-                float: left;
-                height: 44px;
-                padding: 0px 15px;
-                line-height: 44px;
-              }
-              span {
-                float: left;
-
-                input {
-                  width: 66px;
-                  height: 20px;
-                  font-size: 14px;
-                  border: 2px solid rgba(0, 0, 0, 0.15);
-                }
-              }
-              .to {
-                padding: 0 4px;
-              }
-              .tex {
-                padding: 0 10px 0 20px;
-              }
             }
           }
         }
@@ -464,6 +367,11 @@ export default {
               line-height: 18px;
               font-weight: normal;
               color: #333;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
             }
             p {
               padding-top: 4px;
@@ -475,6 +383,9 @@ export default {
       }
     }
   }
+}
+.pgt{
+  text-align: center;
 }
 // 悬浮固定菜单
 .nav-right {
@@ -537,6 +448,7 @@ export default {
     }
   }
 }
-
+</style>
+<style >
 </style>
 

@@ -27,7 +27,7 @@ ajax.interceptors.response.use(response => {
   // 隐藏进度条
   Nprogress.done()
   // 4.响应成功后直接返回数据
-  console.log("111111")
+  console.log("111111",'请求成功')
   return response.data
 
 }, error => {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sy">
      <Header />
      <router-view></router-view>
      <Foot />
@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.sy{
+  overflow: hidden;
+}
 </style>

@@ -17,9 +17,9 @@
         <div class="rmd-wrap">
           <div class="rmd-content">
             <ul id="pulic-spice">
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000011.jpg" alt />
+              <li v-for="(item,index) in rmdComdList.hotProduct" :id="item.id" @click="handleProduct(item.productId)" >
+                <a href="javascript:;" class="on">
+                  <img :src="item.products.coverUrl" alt />
                   <div class="special-offe">
                     <span class="current-price">¥49</span>
                     <span class="old-price">
@@ -33,171 +33,10 @@
                     <span>
                       <em>特价</em>
                     </span>
-                    <a href>【限时5折】i10max真无线蓝牙耳机苹果安卓通用</a>
+                    <a href>{{item.name}}</a>
                   </h3>
                   <p>
                     <em>¥49</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000012.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥229</span>
-                    <span class="old-price">
-                      <del>¥299</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>H16 Pro 入耳检测开盖弹窗无线充电 蓝牙5.0真无线耳机 苹果安卓通用</a>
-                  </h3>
-                  <p>
-                    <em>¥229</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000013.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥59</span>
-                    <span class="old-price">
-                      <del>¥99</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>网易云音乐享乐系列经典LOGO渔夫帽</a>
-                  </h3>
-                  <p>
-                    <em>¥59</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000014.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥128</span>
-                    <span class="old-price">
-                      <del>¥199</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>ADVENTURE TIME 探险活宝 限量款2代蓝牙耳机</a>
-                  </h3>
-                  <p>
-                    <em>¥128</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000015.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥49</span>
-                    <span class="old-price">
-                      <del>¥119</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>网易云音乐享乐系列金色波纹自动折叠伞</a>
-                  </h3>
-                  <p>
-                    <em>¥49</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000016.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥39</span>
-                    <span class="old-price">
-                      <del>¥99</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>UiiSii U8【想见你】同款 入耳式线控重低音游戏耳机 安卓苹果通用</a>
-                  </h3>
-                  <p>
-                    <em>¥39</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000017.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥99</span>
-                    <span class="old-price">
-                      <del>¥225</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>纳百川颈椎按摩器肩颈部护颈仪按摩仪脖子送礼礼物颈椎仪</a>
-                  </h3>
-                  <p>
-                    <em>¥99</em>
-                  </p>
-                </div>
-              </li>
-              <li>
-                <a href class="on">
-                  <img src="../image/163img/ia_100000018.jpg" alt />
-                  <div class="special-offe">
-                    <span class="current-price">¥259</span>
-                    <span class="old-price">
-                      <del>¥299</del>
-                    </span>
-                  </div>
-                </a>
-                <!-- 文字描述 -->
-                <div class="rmd-describe">
-                  <h3>
-                    <span>
-                      <em>特价</em>
-                    </span>
-                    <a href>I40 Pro真无线运动蓝牙5.0耳机 入耳检测 无线充电安卓苹果通用</a>
-                  </h3>
-                  <p>
-                    <em>¥259</em>
                   </p>
                 </div>
               </li>
@@ -228,13 +67,13 @@
         <span class="hot-sp">热门商品</span>
         <div class="goods-list">
           <ul id="pulic-spice">
-            <li>
+            <li v-for="(item,index) in HotComdList.allProduct" :id="item.id">
               <a href class="on">
-                <img src="../image/163img/ia_100000021.jpg" alt />
+                <img :src="item.coverUrl" alt />
                 <div class="special-offe">
-                  <span class="current-price">¥229</span>
+                  <span class="current-price">¥{{item.maxPrice}}</span>
                   <span class="old-price">
-                    <del>¥399</del>
+                    <del>¥{{item.originalCost}}</del>
                   </span>
                 </div>
               </a>
@@ -244,177 +83,10 @@
                   <span>
                     <em>特价</em>
                   </span>
-                  <a href>E43真无线蓝牙耳机蓝牙5.0超长待机安卓苹果通用双耳通话</a>
+                  <a href>{{item.name}}</a>
                 </h3>
                 <p>
-                  <em>¥229</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000022.jpg" alt />
-                <div class="special-offe">
-                  <span class="current-price">¥129</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span>
-                    <em>特价</em>
-                  </span>
-                  <a href>网易云音乐&本来设计 原木创意手机支架手机座扩音器</a>
-                </h3>
-                <p>
-                  <em>¥129</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000023.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥149</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>击音【触控级】降噪防水手势识别蓝牙运动耳机</a>
-                </h3>
-                <p>
-                  <em>¥149</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000024.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥229</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>本来设计 原创木质冰箱磁贴 创意礼品生日礼物</a>
-                </h3>
-                <p>
-                  <em>¥59</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000025.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥229</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>网易云音乐联名款W800X头戴式蓝牙耳机</a>
-                </h3>
-                <p>
-                  <em>¥199</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000026.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥229</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>JBL C200SI立体声入耳式耳机 手机音乐耳机 运动游戏耳机 耳机耳麦 带麦可通话</a>
-                </h3>
-                <p>
-                  <em>¥138</em>
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000027.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥229</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>网易云音乐氧气蓝牙耳机Pro版</a>
-                </h3>
-                <p>
-                  <em>¥329</em>
-                </p>
-              </div>
-            </li>
-            <li>
-              <a href class="on">
-                <img src="../image/163img/ia_100000028.jpg" alt />
-                <div class="special-offe" style="display: none;">
-                  <span class="current-price">¥229</span>
-                  <span class="old-price">
-                    <del>¥399</del>
-                  </span>
-                </div>
-              </a>
-              <!-- 文字描述 -->
-              <div class="rmd-describe">
-                <h3>
-                  <span style="display: none;">
-                    <em>特价</em>
-                  </span>
-                  <a href>漫步者（EDIFIER）W2 真无线 入耳式立体声蓝牙耳机 蓝牙5.0 左右可独立使用</a>
-                </h3>
-                <p>
-                  <em>¥299</em>
+                  <em>¥{{item.minPrice}}</em>
                 </p>
               </div>
             </li>
@@ -454,8 +126,31 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Contain",
+  data(){
+    return{
+      productId:''
+    }
+  },
+  computed: {
+    ...mapState({
+      rmdComdList: (state) => state.home.rmdComdList,
+      HotComdList: (state) => state.home.HotComdList,
+    }),
+  },
+  methods:{
+    handleProduct(id){  
+      this.productId=id
+      console.log(this.productId)
+    }
+  },
+  mounted() {
+    this.$store.dispatch("getRmdComd");
+    this.$store.dispatch("getHotComd");
+    
+  },
 };
 </script>
 
@@ -472,8 +167,7 @@ export default {
     width: 263px;
     height: 382px;
     padding-right: 16px;
-    &:nth-child(4),
-    &:nth-child(8) {
+    &:nth-child(4n-1) {
       padding-right: 0;
     }
     a {
@@ -556,11 +250,12 @@ export default {
 }
 //<!-- 页面的主题内容 -->
 .contain {
+  overflow: hidden;
   width: 1100px;
+  min-height: 750px;
   margin: 0 auto;
   background: #fff;
   padding-bottom: 160px;
-
   .contain-wrap {
     width: 100%;
     margin: 0;
@@ -670,7 +365,7 @@ export default {
     .hot-goods {
       margin-top: 50px;
       width: 100%;
-      height: auto;
+      height: 100%;
       .hot-sp {
         font-weight: bold;
         font-size: 24px;

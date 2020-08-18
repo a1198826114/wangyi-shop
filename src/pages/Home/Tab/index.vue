@@ -8,18 +8,21 @@
             <img class="tab-img" src="../image/tab/tab1.jpg" alt />
             <span>热爆精品</span>
           </a>
+          <em class="line"></em>
         </li>
-        <li>
-          <router-link to='/ip'>
+        <li @click="toIp">
+          <a href="javascript:;">
             <img src="../image/tab/tab2.jpg" alt />
             <span>IP周边</span>
-          </router-link>
+          </a>
+           <em class="line"></em>
         </li>
         <li>
           <a href>
             <img src="../image/tab/tab3.jpg" alt />
             <span>数码影音</span>
           </a>
+           <em class="line"></em>
         </li>
         <li>
           <a href>
@@ -39,19 +42,36 @@
 <script>
 export default {
   name: "Tab",
+  data(){
+    return{
+      keyword:'IP周边'
+    }
+  },
+  methods:{
+    toIp(){
+      this.$router.push(`/ip?cid=1008002&title=${this.keyword}`)
+    
+        
+   
+    }
+  }
 };
+
 </script>
 
 <style lang="less" scoped>
 // 轮播图下的几个分类页面
 .tab {
   width: 100%;
-  border-bottom: snow 1px rgba(0, 0, 0, 0.1);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   .tab-warp {
     width: 1100px;
     margin: 0 auto;
     ul {
+      width: 100%;
       text-align: center;
+      height: 80px;
+
       li {
         float: left;
         width: 275px;
@@ -110,6 +130,16 @@ export default {
               color: #d33a31;
             }
           }
+        }
+        .line {
+          display: inline-block;
+          height: 48px;
+          width: 1px;
+          margin: 16px 0 16px 0;
+          background-color: #000000;
+          filter: alpha(opacity=10);
+          -moz-opacity: 0.1;
+          opacity: 0.1;
         }
       }
     }

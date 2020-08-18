@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dd">
       <Banners />
       <Tab />
       <Contain />
@@ -23,5 +23,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.dd{
+    overflow: hidden;
+}
 </style>
